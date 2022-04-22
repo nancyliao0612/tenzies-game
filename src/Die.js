@@ -1,17 +1,11 @@
-function Die({ value }) {
+function Die({ value, isHeld, holdDice }) {
   return (
-    <section className="die-wrapper">
-      <div>{value}</div>
-      <div>{value}</div>
-      <div>{value}</div>
-      <div>{value}</div>
-      <div>{value}</div>
-      <div>{value}</div>
-      <div>{value}</div>
-      <div>{value}</div>
-      <div>{value}</div>
-      <div>{value}</div>
-    </section>
+    <div
+      style={{ background: isHeld === true ? "#59E391" : "white" }}
+      onClick={holdDice}
+    >
+      {value}
+    </div>
   );
 }
 
