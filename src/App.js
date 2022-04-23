@@ -51,6 +51,7 @@ function App() {
       setTenzies(false);
       allNewDie();
       setTime(0);
+      setCountRoll(0);
     }
     if (e.target.textContent === "New Game") {
       setStart(true);
