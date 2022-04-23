@@ -4,6 +4,7 @@ import { nanoid } from "nanoid";
 
 function App() {
   const [dice, setDice] = useState([]);
+  const [tenzies, setTenzies] = useState(false);
 
   function allNewDie() {
     const array = [];
@@ -32,7 +33,6 @@ function App() {
   }
 
   function holdDice(id) {
-    console.log(id);
     const newArray = dice.map((item) => {
       if (id === item.id) {
         return { ...item, isHeld: !item.isHeld };
@@ -43,9 +43,28 @@ function App() {
     setDice(newArray);
   }
 
+  useEffect(() => {
+    // check if all dice are held
+    const allDiceHeld = dice.filter((item) => item.isHeld === true);
+    // check if all dice have the same value
+    const allNumber = dice.map((item) => item.value);
+    const totalNumber = allNumber.reduce((total, current) => {
+      return total + current;
+    }, 0);
+    if (allDiceHeld.length === 10 && allNumber[0] * 10 === totalNumber) {
+      setTenzies(true);
+      console.log("You won!");
+    }
+  }, [dice]);
+
   return (
     <main>
       <div className="tenzies-wrapper">
+        <h1 className="title">Tenzies</h1>
+        <p className="instructions">
+          Roll until all dice are the same. Click each die to freeze it at its
+          current value between rolls.
+        </p>
         <section className="die-wrapper">
           {dice.map((item) => {
             return (
