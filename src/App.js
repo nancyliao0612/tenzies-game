@@ -112,7 +112,7 @@ function App() {
         </div>
       </main>
       <h4>Fastest record: {record} sec</h4>
-      <h4>Count of rolls: {countRoll}</h4>
+      <h4>Number of rolls: {countRoll}</h4>
     </>
   );
 }
