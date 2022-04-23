@@ -12,6 +12,7 @@ function App() {
   const [record, setRecord] = useState(
     () => JSON.parse(localStorage.getItem("record")) || 0
   );
+  const [start, setStart] = useState(false);
 
   useEffect(() => {
     localStorage.setItem("record", JSON.stringify(record));
@@ -32,9 +33,9 @@ function App() {
       setTime((prevTime) => prevTime + 1);
     }, 1000);
     setIntervalId(intervalId);
-  }, []);
+  }, [start]);
 
-  function handleRoll() {
+  function handleRoll(e) {
     setCountRoll((prevRoll) => prevRoll + 1);
     const newRollArray = [];
     dice.map((item) => {
@@ -50,6 +51,9 @@ function App() {
       setTenzies(false);
       allNewDie();
       setTime(0);
+    }
+    if (e.target.textContent === "New Game") {
+      setStart(true);
     }
   }
 
