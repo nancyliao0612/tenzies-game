@@ -1,6 +1,7 @@
 import Die from "./Die";
 import { useState, useEffect } from "react";
 import { nanoid } from "nanoid";
+import ReactConfetti from "react-confetti";
 
 function App() {
   const [dice, setDice] = useState([]);
@@ -30,6 +31,10 @@ function App() {
       }
     });
     setDice(newRollArray);
+    if (tenzies) {
+      setTenzies(false);
+      allNewDie();
+    }
   }
 
   function holdDice(id) {
@@ -59,6 +64,7 @@ function App() {
 
   return (
     <main>
+      {tenzies && <ReactConfetti />}
       <div className="tenzies-wrapper">
         <h1 className="title">Tenzies</h1>
         <p className="instructions">
@@ -77,7 +83,7 @@ function App() {
             );
           })}
         </section>
-        <button onClick={handleRoll}>Roll</button>
+        <button onClick={handleRoll}>{tenzies ? "New Game" : "Roll"}</button>
       </div>
     </main>
   );

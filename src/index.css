@@ -63,8 +63,8 @@ main {
 button {
   border-style: none;
   background: #5035ff;
+  width: max-content;
   color: #fff;
-  width: 90px;
   border-radius: 3px;
   padding: 10px 20px;
   text-align: center;
