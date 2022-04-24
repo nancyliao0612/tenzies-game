@@ -54,7 +54,7 @@ function App() {
       setCountRoll(0);
     }
     if (e.target.textContent === "New Game") {
-      setStart(true);
+      setStart((prevStart) => !prevStart);
     }
   }
 
